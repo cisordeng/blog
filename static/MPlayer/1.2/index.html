@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>dearvee's Code Home</title>
+
+<link href="css/style.css" rel="stylesheet" type="text/css"/>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/analyser.js"></script>
+<script charset="gb2312" src="js/lrc.js"></script>
+</head>
+
+
+<body>
+	<audio id='py'></audio>
+<div id="all" class="all">
+	<canvas id='canvas' width='1000' height='1000'></canvas>	
+	
+	<div id="musicplayer" class="musicplayer">
+		
+		<audio 
+		id="music" src='http://dl.stream.qqmusic.qq.com/C400003eVmWZ1wHkA0.m4a?vkey=0DBB181498D1538AAC7718BAE54840EC1F9A4886AB6B063C8421CC4659A6000242BCC797B4ED5E3501F07DA00BE5FC67064E7911C6058145&guid=6908829875&fromtag=66'
+		>
+		</audio>
+		
+		<button id="play_button" 
+				class="play_css"
+				onclick="Play();">
+		</button>
+		
+		<button id="stop_button"
+				class="stop_css"
+				onclick="Stop();">
+		</button>
+
+		<button 
+				id="next_one" 
+				class="next_one_css">		
+		</button>
+		<button id="previous_track"
+				class="previous_track_css">
+		</button>
+
+		
+		<progress id="progress" 
+				  class="progress_css"
+				  max="100"
+				  value="0" 
+				  >
+		</progress>
+
+		<span id="click_progress"
+	              class="progress_css" 
+	              style="background:rgba(255,255,255,0);cursor: pointer;"></span>
+
+		<button id="drag_button"
+				class="drag_css"
+				>
+		</button>
+
+
+		<span id="time" class="time_css"></span>
+
+		<span id="lrc" class="lrc_css"></span>
+
+	</div>
+	<progress id="music_Buffer" 
+			  class="music_Buffer_css"  
+			  max="100">
+	</progress>
+</div>
+</body>
+</html>
+
+<!--by dearvee on 2016 11 25-->

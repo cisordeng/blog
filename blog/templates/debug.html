@@ -1,0 +1,47 @@
+{% include 'head.html' with title='问题' %}
+	<div id='main'>
+		<div id='page'>
+		<script>Init($(".wrap .index>li:eq(2)"));$('title').html('问题');</script>
+<ul>
+{% for debug in debug_list %}
+	<li>
+		<div class='tip' style='background: #24262e;'>{{ forloop.revcounter }}</div>
+		<ul class='log'>
+			<li>
+				<div class='tip'>Bug</div>
+				<div class='left'>{{ debug.que | safe }}</div>
+			</li>
+			<li>
+				<div class='tip' style='background: green;'>Debug</div>
+				<div class='right'>{{ debug.sol | safe }}</div>
+			</li>
+			<li class='time'>{{ debug.timestamp|date:'Y-m-d' }}</li>
+		</ul>
+	</li>
+{% endfor %}
+</ul>
+{% ifnotequal debug_list|length 1 %}	<!--单个文章去除页码-->
+
+<ul id='pagenum'>
+<li><a href="javascript:void(0);" onclick="getPage('/debug/')">首页</a></li>
+<li>
+{% ifnotequal current 1 %}	<!--当前为首页-->
+<a href="javascript:void(0);" onclick="getPage('/debug/${{ current|add:'-1' }}')">上一页</a>
+{% endifnotequal %}
+</li>
+{% for n in page %}
+<li><a href="javascript:void(0);" onclick="getPage('/debug/${{ n }}')">{{ n }}</a></li>
+{% endfor %}
+<li>
+{% ifnotequal current page|length %}	<!--当前为尾页-->
+<a href="javascript:void(0);" onclick="getPage('/debug/${{ current|add:'1' }}')">下一页</a>
+{% endifnotequal %}
+</li>
+</ul>
+<script>$("#pagenum li:eq({{ current|add:'1' }})").addClass('selected')</script></script>
+
+{% endifnotequal %}
+		</div>
+	</div>
+
+{% include 'footer.html' %}

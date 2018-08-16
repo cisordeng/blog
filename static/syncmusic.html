@@ -1,0 +1,104 @@
+<!--header-->
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='css/style.css' type='text/css'/>
+<link rel='stylesheet' href='css/article.css' type='text/css'/>
+<link rel='stylesheet' href='css/log.css' type='text/css'/>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/ajax.js"></script>
+<title>》真实的我</title>
+</head>
+<div>
+	<nav>
+		<div class="wrap">
+			<ul class="index">
+				<li><a href="/">首页</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/article')">随笔</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/debug')">问题</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/word')">拾光录</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/message')">留言板</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/static/syncmusic.html');">同步音乐</a></li>
+				<!--<li><a href="javascript:void(0);" onclick="getPage('/static/about.html')">关于我</a></li>-->
+				<div class='mplayer'>
+					<div class='ctrl'><img src='/static/paused.png'></div>
+					<div class='view'></div>
+					<div class='mtip'>
+						<ul class='mlists'></ul>
+						<ul class='mlist'></ul>
+						<audio id='py'></audio>
+					</div>
+				</div>
+			</ul>
+		</div>
+	</nav>
+<a href='javascript:void(0);' id='top'>Top</a>
+</div>
+<!--header-->
+
+
+<div id='main'>
+<div id='page'>
+<script>
+$("#page").css("max-width","1000px");
+Init($(".wrap .index>li:eq(5)"));
+</script>
+
+<link rel='stylesheet' href='css/song.css' type='text/css'/>
+<script src="js/song.js"></script>
+<h1 style='text-align:center;'>Sync My qqmusic Data.</h1>
+
+<!--
+<style>
+	#qq-data{
+		text-align:center;
+	}
+	#qq-data th{
+		width:333px;
+	}
+
+	#qq-admin{
+		width:200px;
+		height:200px;
+	}	
+</style>
+<table id='qq-data' style='display:inline-block;'>
+	<tr>
+		<th><span>Head Imag</span></th>
+		<th><span>Nike</span></th>
+		<th><span>Music Taste</span></th>
+	</tr>
+	<tr>
+		<th><img id='qq-admin'/></th>
+		<th><span id='qq-nick'></span></th>
+		<th><span id='qq-taste'></span></th>
+	</tr>
+</table>
+-->
+<ul id='lists'>
+</ul>
+
+
+<div id='player'>
+	<ul id='list'>
+	</ul>
+	<audio id='py'></audio>
+</div>
+
+	</div>
+</div>
+
+
+<script src="/static/js/canvas-nest.min.js"></script>
+
+<footer>
+	<ul class='index'>
+		<li><a href='https://github.com/cecilpro'>GitHub</a></li>
+		<li><a href='https://www.cnblogs.com/dearvee'>CnBlogs</a></li>
+		<li><a href='http://blog.csdn.net/dearvee'>CSDN</a></li>
+	</ul>
+	<ul class='index'>
+		<li><a href='javascript:void(0);' onclick='getDonate();'>Donate</a></li>
+		<li><a href='mailto:admin@cecil.pro'>Email</a></li>
+	<ul>
+</fonter>

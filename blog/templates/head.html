@@ -1,0 +1,59 @@
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+<link rel='stylesheet' href='/static/css/article.css' type='text/css'/>
+<link rel='stylesheet' href='/static/css/log.css' type='text/css'/>
+<link rel='stylesheet' href='/static/css/song.css' type='text/css'/>
+<link rel="stylesheet" href="/static/css/message1.css">
+<link rel="stylesheet" href="/static/css/default.css">
+
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/ajax.js"></script>
+<script src="/static/js/analyser.js"></script>
+<script src="/static/js/song.js"></script>
+<script src="/static/js/message.js"></script>
+<script src="//twemoji.maxcdn.com/2/twemoji.min.js?11.0"></script>
+
+<link rel="stylesheet" href="/static/css/plyr.css">
+<script src="/static/js/plyr.js"></script>
+
+<title>{{ title }}</title>
+</head>
+<nav>
+	<div id="nav">
+        <div id='author'><img src='https://avatars3.githubusercontent.com/u/42148024?s=460&v=4'></div>
+		<ul id="item-list">
+			<li><a href="/">首页</a></li><li><a href="javascript:void(0);" onclick="getPage('/articles')">随笔</a></li><li><a href="javascript:void(0);" onclick="getPage('/log')">日志</a></li><!--<li><a href="javascript:void(0);" onclick="getPage('/word')">拾光录</a></li>|--><li><a href="javascript:void(0);" onclick="getPage('/message')">留言</a></li>
+		</ul>
+	</div>
+</nav>
+<div id="mplayer">
+    <div id="music-author"></div>
+    <div id="music-body">
+        <div id="music-lrc"></div>
+		<div id="music-list"></div>
+    	<div id="music-song"></div>
+	</div>
+</div>
+<div id='bt-menu'>MENU</div>
+<div id="bt-music">MUSIC</div>
+<div id='top'>T</div>
+
+<!--
+                <ul class="mlrc"></ul>
+<div class='mplayer'>
+    <div class='ctrl'>
+        <canvas width='56' height='56'></canvas>
+        <img src='/static/paused.png'>
+    </div>
+	<div class='view'></div>
+	<div class='mtip'>
+	    <ul class='mlists'></ul>
+	    <ul class='mlist'></ul>
+	    <audio id='py' data-plyr-config="{'enable': false}"></audio>
+	</div>
+</div>
+				
+                -->
+

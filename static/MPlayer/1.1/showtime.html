@@ -1,0 +1,101 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>play</title>
+<script src="js/script.js" ></script>
+</head>
+<style>
+#title{width:560px;
+      height:600px;
+	  top:100px;
+	  left:200px;
+	  position:fixed;
+	  background-color:aqua;
+	  border-radius:8px 8px 8px 8px;
+	  border: 1px dashed #7D8CA0;
+	  font-family:"advent-pro";
+	  text-align:center;
+	  }
+#play_button{
+	  width:40px;
+	  height:40px;
+	  position:absolute;
+	  left:20px;
+	  top:40px;
+	  background-color:aqua;
+	  border-radius:5px 5px 5px 5px;
+	  border-color:aliceblue;
+	  
+	  color:#565656;
+	  font-size:20px;
+	text-align:center;
+}
+#stop_button{
+		width:40px;
+	  height:40px;
+	  position:absolute;
+	  left:70px;
+	  top:40px;
+	  background-color:aqua;
+	  border-radius:5px 5px 5px 5px;
+	  border-color:aliceblue;
+	  
+	  color:#565656;
+}
+#time{
+	width:560px;
+	height:30px;
+	position:absolute;
+	background-color:aqua;
+	top:80px;
+	left:0px;
+	text-align:center;
+}
+#name{width:560px;
+       height:30px;
+	   position:absolute;
+	   background-color:aqua;
+	   top:110px;
+	   left:0px;
+	   text-align:center;
+}
+#lrc{
+       width:560px;
+	   height:30px;
+	   position: absolute;
+	   background-color: #fff;
+	   top: 140px;
+	   text-align: center;
+}
+#canvas{width:450px;
+		height:35px;
+		position:absolute;
+		left:110px;
+		top:40px;        
+}
+</style>
+
+
+
+<body>
+<font color="#686868" size="+2"/>
+	<div id="title" >音乐播放器building...
+     <input type="button" onClick="Play()" value="▶"
+      id="play_button">
+     <input type="button" onClick="Stop()" value="▇"
+      id="stop_button">
+     <canvas id="canvas" ></canvas>
+     <script>drawLine_static(36,80,240,80);</script><!--划静态底线-->
+     <div id="time"></div>
+     <div id="name">向往 - 李健</div>
+     <div id="lrc"></div>
+     <script>Lrc();</script>
+<audio id="music"
+       src="music/向往 - 李健.mp3" 
+       preload="auto"
+       loop="true"> 
+       
+       
+</body>
+</html>

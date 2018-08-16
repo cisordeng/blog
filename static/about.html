@@ -1,0 +1,83 @@
+<!--header-->
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='css/style.css' type='text/css'/>
+<link rel='stylesheet' href='css/article.css' type='text/css'/>
+<link rel='stylesheet' href='css/log.css' type='text/css'/>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/ajax.js"></script>
+<title>》真实的我 </title>
+</head>
+<div>
+	<nav>
+		<div class="wrap">
+			<ul class="index">
+				<li><a href="/">首页</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/article')">随笔</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/debug')">问题</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/word')">拾光录</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/static/syncmusic.html');">同步音乐</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/static/about.html')">关于我</a></li>
+			</ul>
+		</div>
+	</nav>
+<a href='javascript:void(0);' id='top'>Top</a>
+</div>
+<!--header-->
+<div id='main'>
+<div id='page'>
+<script>$("#page").css("max-width","600px");Init($(".wrap .index>li:eq(6)"));</script>
+
+<style>
+#me{
+	width: 180px;
+	height: 180px;
+	float: left;
+	margin: 10px 20px 10px 10px;
+}
+
+p{
+	word-wrap: break-word;
+	text-indent: 30px;
+}
+</style>
+
+<div>
+	<img id='me' src='/static/me.jpg'/>
+	<p>Hi ！ 我的名字是邓炜。(如果你看到Tonky或者Dearvee，那就是我。我更喜欢Tonky这个名字，当然那不是Donkey。)</p>
+	<p>我是一名（Python）程序员（先让我美着吧）。</p>
+	<p>爱好嘛，当然是“玩”喽，真不知道要玩到多大勒。Python这个“玩具”还是不错的，开门见山，没那么多前奏。当然也有人说这玩意玩玩还行，拿来赚饭吃...有点欠。当然我不会在这里争论什么。</p>
+	<p>我喜欢僻静的小路，它沿途的风景会让我觉得不是在赶路，而像在旅行。走了很远的路也不会累，偶然回头的时候，居然已经走了这么远，还会给自己一个不小的惊喜咧。</p>
+	<p>之前一直有一个小缺点困扰着我，就是关键时刻掉链子。那是外在表现，内在嘛，就是害怕失败喽。所以每次一到关键时刻就干脆放弃。平时总比关键时刻做得好。这个问题困扰了我很久。“玩”了这么多小玩意，语法和逻辑学了不少。最重要的就是Coding让我克服了我的这一缺点。</p>
+	<p>不再像以前一样总是顾虑太多。也没了什么所谓的“关键时刻”。“有多重要，又不会挂，真是。”,一些以前只是在脑海过把瘾的“旅行”我可以勇敢的实现。</p>
+	<p>背起双肩包，到喜欢的城市逛一逛。敢去吗？(怕个球)。</p>
+	<p>音乐播放器会做嘛？（不会。但是我能做。）</p>
+	<p>你画我猜可以吗？（有点思路。我可以。）</p>
+	<p>...</p>
+	<p>觉得自己无所不能丫（尽管每个人本应该是这样）！现在一切都不是问题了，一切都是时间问题，我的时间是有限的，我不能像以前一样狂轰滥炸式的学习了。C，Java，PHP，Python，前端。必须作出抉择。我选择了Python，也许是它开门见山的方式很合我的性格。</p>
+	<p>逛城市那段日子，也顺道面试了几家公司，学习Django就是在一家面试的时候被老大洗脑了，当时，当时只知道Django是Python Web框架，在面试之前脑补了下，完全不懂。天不怕地不怕的我回来就琢磨把Blog搬到Django框架下。这不你才能看到我。</p>
+	<p>前阵子，狠下心来把Blog从虚拟主机搬到了我的旧手机上。后端从PHP搬到了Python。原来的PHP手工小站也是花了不少精力，但一想到后端用Python可以返回.py文件的结果，真的不敢想象...（那Blog不是可以直接调用爬虫？那还等啥？当然数据量过大时，还是应该放在数据库供调用，当数据库找不到，再调用爬虫程序。）</p>
+	<p>你现在看到的网页来自我书桌上旧手机的回应。我给它安装了Ubuntu16.04。他的部署为Nginx+Uwsgi+Django，它可以实现动静分离。理论上应该比单纯的Django更高效。外网穿透采用免费的Ngrok隧道。God ！我连个路由都没有。好吧用校园网吧～所以说你能看到我，我们学校校园网是给足了面子。</p>
+</div>
+	<p>每次面试都应该能够学到技术栈，如果面试官说的技术栈你都会，那你也没必要去这家公司了。没有新知识支撑着，你会很累的。</p>
+	<p>最后希望你逛的开心！Goodbye ！</p>
+	<p>--------------2017-10-8 02:12 独自一人于安徽科技学院（龙湖校区）宿舍。</p>
+	</div>
+</div>
+
+
+
+<script src="/static/js/canvas-nest.min.js"></script>
+
+<footer>
+	<ul class='index'>
+		<li><a href='https://github.com/cecilpro'>GitHub</a></li>
+		<li><a href='https://www.cnblogs.com/dearvee'>CnBlogs</a></li>
+		<li><a href='http://blog.csdn.net/dearvee'>CSDN</a></li>
+	</ul>
+	<ul class='index'>
+		<li><a href='javascript:void(0);' onclick='getDonate();'>Donate</a></li>
+		<li><a href='mailto:admin@cecil.pro'>Email</a></li>
+	<ul>
+</fonter>

@@ -1,0 +1,56 @@
+<html>
+{% include 'head.html' with title='日志' %}
+{% load display_name %}
+<body>
+
+<div id='main'>
+        <header>
+            <div class='back'></div>
+            <div class='black'></div>
+        </header>
+    <div id='page'>
+		<script>
+            $('title').html('日志');
+            $('.black').html('<h1>日志</h1>');
+            $('header').css('height','600px');
+        </script>
+        <div class='body'>
+            <ul class='log'>
+                {% for log in log_list %}
+                <li {% if log.prog == 1 %} style='color: inherit;background:inherit;'{% endif %}>
+                <span class='log-t'>{{ log.timestamp|date:"Y年m月d" }}</span>
+                <span class='log-w'>{{ log.event }}</span>
+                <span class='log-i'>{{ log|display_name:'prog' }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+<ul id='pagenum'>
+<li>
+<a href="javascript:void(0);" 
+
+{% ifnotequal current 1 %}
+onclick="getPage('/log/?page={{ current|add:'-1' }}')"
+{% endifnotequal %}
+
+><</a>
+
+</li>
+<li><span>{{ current }}</span> of <span>{{ pages }}</span></li>
+<li>
+<a href="javascript:void(0);" 
+
+{% ifnotequal current pages %}
+onclick="getPage('/log/?page={{ current|add:'1' }}')"
+{% endifnotequal %}
+
+>></a>
+</li>
+</ul>
+
+		</div>
+        {% include 'footer.html' %}
+	</div>
+</body>
+</html>

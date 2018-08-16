@@ -1,0 +1,267 @@
+
+#mplayer{
+    position: fixed;
+    width: 0;
+    height: 0;
+    top: 0;
+    right: 0;
+    background: #fff;
+    z-index: 898;
+    -webkit-transition: .5s ease all;
+    -moz-transition: .5s ease all;
+    -ms-transition: .5s ease all;
+    -o-transition: .5s ease all;
+    transition: .5s ease all;
+}
+#mplayer.display-mplayer{
+    width: 100%;
+    height: 100%;
+}
+.hidden-scroller{
+    overflow: hidden;
+}
+#music-body{
+    padding: 10rem;
+    text-align: center;
+    width: 62rem;
+    height: 26rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+#music-author {
+    width: 100px;
+    position: absolute;
+    top: 5rem;
+    left: 6rem;
+}
+#music-author img {
+    height: 100px;
+    border-radius: 100%;
+}
+#music-author span {
+    display: block;
+    margin: 1rem;
+}
+#music-list {
+    width: 20rem;
+    display: inline-block;
+    float: left;
+    height: 100%;
+}
+#music-list ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 0;
+}
+#music-list li {
+    display: block;
+    height: 3rem;
+    line-height: 3rem;
+    cursor: pointer;
+    padding: 5px 0;
+}
+#music-list li:nth-child(2n+1) {
+    background: #fafafa;
+}
+#music-list li:hover{
+    background: #eee;
+}
+#music-list img{
+    height: 100%;
+}
+#music-list span{
+    position: absolute;
+    margin: 0 1rem;
+}
+#music-song{
+    display: inline-block;
+    overflow-x: hidden;
+    width: 40rem;
+    height: 100%;
+    float: left;
+    margin-left: 2rem;
+}
+#music-song tr{
+	display: block;
+    height: 3rem;
+    line-height: 3rem;
+    cursor: pointer;
+    padding: 3px 0;
+}
+#music-song tr:nth-child(2n+1) {
+    background: #fafafa;
+}
+#music-song tr:hover{
+    background: #eee;
+}
+#music-song td{
+    width: 20rem;
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+}
+
+
+#music-lrc ul{
+    position: relative;
+    display: inline-block;
+    transition: 0.3s;
+    overflow: hidden;
+    height: 50px;
+    line-height: 50px;
+    list-style: none;
+    padding: 0;
+    vertical-align: middle;
+}
+
+#music-lrc li{
+    height: inherit;
+}
+/*************************************/
+.mplayer{
+    color: #ccc;
+    left: 100px;
+    position: relative;
+    display: inline-block;
+}
+.mplayer .ctrl{
+	display: inline-block;
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+	border-radius: 100px;
+	transition: 0.3s;
+	cursor: pointer;
+	box-shadow: 0 0 5px red;
+	animation: trans 20s linear infinite;
+	animation-play-state: paused;
+}
+
+@keyframes trans{
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+.ctrl:hover img{
+	opacity: 1;
+}
+.ctrl:hover{
+	transform: rotate(360deg);
+}
+.ctrl img{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    border-radius: 100px;
+	opacity: 0;
+	transition: 0.3s;
+}
+.ctrl canvas{
+    position: absolute;
+    display: block;
+    left: -3;
+    top: -3;
+    border-radius: 100px;
+}
+.mplayer .view{
+	display: inline-block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    bottom: 0;
+    right: 0;
+    border-radius: 10px;
+    background: #c20c0c;
+	cursor: pointer;
+}
+.view:hover + .mtip{
+	display: block;
+}
+
+.mplayer .mtip{
+	display: none;
+    width: 600px;
+    vertical-align: middle;
+    max-height: 300px;
+    margin: 15px 0 0 -300px;
+    position: absolute;
+	background: #242424;
+    border-radius: 0 0 5px 5px;
+}
+.mtip:hover {
+	display: block;
+}
+.mtip::before {
+    content: "";
+    display: block;
+    height: 0px;
+    width: 0px;
+    margin: -20 0 0 335px;
+    border-style: solid;
+    border-width: 10px 10px;
+    border-color: transparent transparent #242424;
+}
+.mlists{
+	width: 150px;
+	max-height: 300px;
+    list-style: none;
+    padding: 0;
+	overflow: auto;	
+	float: left;
+}
+
+.mlist{
+	width: 450px;
+    list-style: none;
+    padding: 0;
+	max-height: 300px;
+	overflow: auto;
+	float: left;
+}
+.mplayer li {
+    padding: 5px;
+    cursor: pointer;
+	transition: 0.3s;
+}
+
+.mplayer li:hover {
+	background: #000;
+    color: #fff;
+}
+
+.playing{
+	background: #000;
+	color: #fff;
+}
+
+.playing:before{
+	content: "";
+	display: inline-block;
+    border-style: solid;
+    border-color: transparent transparent transparent #c20c0c;
+    border-width: 5px;
+}
+
+.mlrc{
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    transition: 0.3s;
+    overflow: hidden;
+    width: 0;
+    height: 50px;
+    line-height: 50px;
+    list-style: none;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.mlrc li{
+    height: inherit;
+}

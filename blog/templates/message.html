@@ -1,0 +1,28 @@
+<html>
+{% include 'head.html' with title='留言' %}
+<body>
+    <div id='main'>
+        <header>
+            <div class='back'></div>
+            <div class='black'></div>
+        </header>
+		<div id='page'>
+		<link rel='stylesheet' href='/static/css/message.css' type='text/css'/>
+		
+		<script>
+            $('title').html('留言');
+            $('.black').html('<h1>留言</h1>');
+            $('header').css('height','100%');
+        </script>
+
+    <div id="message-add" onclick="var submit_flag=true,i=1,j=1;create_message();">+</div>
+    <iframe id="action" name="action" src="about:blank" style="display:none;" onload="
+    {% for message in message_list %}
+        createBoard(false, '{{ message.body }}', '{{ message.pos }}', '{{ message.color }}');
+    {% endfor %}">
+    </iframe><!--no F5 get data-->
+		</div>
+        {% include 'footer.html' %}
+	</div>
+</body>
+</html>

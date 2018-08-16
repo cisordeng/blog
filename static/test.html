@@ -1,0 +1,44 @@
+<html>
+	<body>
+		<audio id='py'src = 'http://dl.stream.qqmusic.qq.com/C400002onMny3fmidh.m4a?vkey=442DE71C62C696EC7C69E7DAE042798718AC012CE6FCD96C717EA298469D4E970E19236F3628054F8DE1CE7557F9174C7317CAC476E3F4E8&guid=5665602385&uin=1797977995&fromtag=66'
+   ></audio><canvas id='canvas' width='1000' height='1000'></canvas>	
+	
+<script>
+var url = 'http://dl.stream.qqmusic.qq.com/C400002onMny3fmidh.m4a?vkey=442DE71C62C696EC7C69E7DAE042798718AC012CE6FCD96C717EA298469D4E970E19236F3628054F8DE1CE7557F9174C7317CAC476E3F4E8&guid=5665602385&uin=1797977995&fromtag=66';
+//url = 'https://fourthof5assets.s3-eu-west-1.amazonaws.com/heng-feeling-good.mp3';
+url = 'http://fs.w.kugou.com/201805010417/0765dbe2b287ab35f03b6a4cb2160ff2/G022/M06/13/05/Vg0DAFWJ7iWALoJxAB-C_xKMH60158.mp3';
+if (!window.AudioContext) {
+    alert('您的浏览器不支持AudioContext');
+} else {
+    var atx = new AudioContext();
+	var source =null;
+	var audio = document.getElementById('py');
+//	audio.crossOrigin = '';
+	audio.src=url;
+	audio.load();
+            var analyser = atx.createAnalyser();
+            source = atx.createMediaElementSource(audio);
+            source.connect(analyser);
+ 			analyser.connect(atx.destination);
+			audio.play();
+            //开始绘制频谱图
+            var canvas = document.getElementById('canvas'),
+                        cwidth = canvas.width,
+                        cheight = canvas.height - 2;
+            ctx = canvas.getContext('2d');
+            var drawMeter = function () {
+                var array = new Uint8Array(analyser.frequencyBinCount);
+                analyser.getByteFrequencyData(array);
+                ctx.clearRect(0, 0, cwidth, cheight);
+                for (var i = 0; i < array.length && array[i] > 0; i+=10) {
+                    var value = array[i];
+                    ctx.strokeRect(i, cheight - value, 10, cheight);
+                }
+                requestAnimationFrame(drawMeter);
+            }
+            requestAnimationFrame(drawMeter);
+}
+
+</script>
+	</body>
+</html>

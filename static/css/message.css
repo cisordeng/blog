@@ -1,0 +1,91 @@
+#message-add{
+    color: #242424!important;
+    position: fixed;
+    font-size: 1.5em;
+    right: 30px;
+    top: 50%;
+    display: block;
+    background: rgba(255,255,255,0.1);
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 100px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: 0.8s;
+    transform: scale(1);
+    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.117); 
+}
+#message-add:hover{
+    box-shadow: 0 0.375rem 0.9375rem rgba(0,0,0,0.2);
+    transform: scale(1.1);
+}
+
+
+.boarder_css{
+    width: 150px;
+    height: 100px;
+    position: absolute;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
+    border: none;
+    opacity: 1;
+    outline: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: text;
+    user-select: none;
+    transition: color 0.5s;
+    resize: none;
+    text-shadow: 1px 1px 2px #666666;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.117);
+    transition: filter 0.3s;
+    filter: blur(0.8px);
+}
+
+.boarder_css:hover{
+    box-shadow: 0 0.375rem 0.9375rem rgba(0,0,0,0.2);
+    filter: blur(0px);
+}
+
+.boarder_css:focus{
+    filter: blur(0px);
+}
+
+.order_css{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background: #333333;
+}
+
+.able_css{
+    width:190px;
+    height:20px;
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    background:#ffffff;
+    color:#666666;
+    cursor: pointer;
+    text-align:center;
+    border: none;
+    text-shadow: 1px 1px 2px #666666;
+    box-shadow: 1px 1px 2px #666666;
+}
+.parent_css{
+    position: absolute;
+    width: 150px;
+    height: 120px;
+    border-radius: 5px;
+    cursor: move;
+    text-shadow: 1px 1px 2px #eee;
+    box-shadow: 1px 1px 2px #eee;
+    font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
+}

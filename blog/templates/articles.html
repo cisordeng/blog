@@ -1,0 +1,62 @@
+<html>
+{% include 'head.html' with title='随笔' %}
+<body>
+    <div id='main'>
+        <header>
+            <div class='back'></div>
+            <div class='black'></div>
+        </header>
+		<div id='page'>
+		<script>
+            $('title').html('随笔');
+            $('.black').html('<h1>随笔</h1>');
+            $('header').css('height','600px');
+        </script>
+		
+<ul id='articles'>
+{% for article in article_list %}
+	<li class='card' style='padding: 0;'>
+        <a href="javascript:void(0);" onclick="getPage('/articles/{{ article.title }}')">
+        <div id='article-img' style='background-image:url({{ article.imgurl }})'></div>
+		</a>
+        <div id='article-tip'></div>
+        <div id='article'>
+			<h2><a href="javascript:void(0);" onclick="getPage('/articles/{{ article.title }}')">{{ article.title }}</a></h2>
+			<div id='article-au'>posted by <strong>Cisor</strong> on <strong>{{ article.timestamp|date:'Y-m-d' }}</strong></div>
+            <div id='article-sim'><p>{{ article.body | striptags| cut:'&nbsp;' | truncatechars:30 }}<a class='readmore' href="javascript:void(0);" onclick="getPage('/articles/{{ article.title }}')">ReadMore</a></p></div>
+                <div id='article-info'>PV:{{ article.views }}</div>
+				<script>$('title').html('随笔');</script>
+		</div>
+	</li>
+{% endfor %}
+
+</ul>
+
+<ul id='pagenum'>
+<li>
+<a href="javascript:void(0);" 
+
+{% ifnotequal current 1 %}
+onclick="getPage('/articles/?page={{ current|add:'-1' }}')"
+{% endifnotequal %}
+
+><</a>
+
+</li>
+<li><span>{{ current }}</span> of <span>{{ pages }}</span></li>
+<li>
+<a href="javascript:void(0);" 
+
+{% ifnotequal current pages %}
+onclick="getPage('/articles/?page={{ current|add:'1' }}')"
+{% endifnotequal %}
+
+>></a>
+</li>
+</ul>
+
+		</div>  
+        {% include 'footer.html' %}
+	</div>
+</body>
+</html>

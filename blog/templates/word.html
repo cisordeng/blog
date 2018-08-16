@@ -1,0 +1,37 @@
+{% include 'head.html' with title='拾光录' %}
+	<div id='main'>
+		<div id='page'>
+		<script>Init($(".wrap .index>li:eq(3)"));$('title').html('拾光录');</script>
+<ul id='article'>
+{% for word in word_list %}
+	<li>
+		<h4>{{ word.timestamp|date:'Y-m-d' }}</h4>
+		<p class='wordbody'>{{ word.body|safe }}</p>
+	</li>
+{% endfor %}
+</ul>
+{% ifnotequal word_list|length 1 %}	<!--单个文章去除页码-->
+
+<ul id='pagenum'>
+<li><a href="javascript:void(0);" onclick="getPage('/word')">首页</a></li>
+<li>
+{% ifnotequal current 1 %}	<!--当前为首页-->
+<a href="javascript:void(0);" onclick="getPage('/word/${{ current|add:'-1' }}')">上一页</a>
+{% endifnotequal %}
+</li>
+{% for n in page %}
+<li><a href="javascript:void(0);" onclick="getPage('/word/${{ n }}')">{{ n }}</a></li>
+{% endfor %}
+<li>
+{% ifnotequal current page|length %}	<!--当前为尾页-->
+<a href="javascript:void(0);" onclick="getPage('/word/${{ current|add:'1' }}')">下一页</a>
+{% endifnotequal %}
+</li>
+</ul>
+<script>$("#pagenum li:eq({{ current|add:'1' }})").addClass('selected')</script></script>
+
+{% endifnotequal %}
+		</div>
+	</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,25 @@
+<!--<?php
+/**
+ * Created by PhpStorm.
+ * User: Dearvee
+ * Date: 2017/4/28
+ * Time: 10:47
+ */
+
+include 'getdata.php';
+$message=str_replace("\r\n","\\n",$message);
+?>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+	<title>留言板</title>
+
+
+</head>
+<body id="body" bgcolor="#f1f1f1" style="overflow: hidden">
+<script src="../../index/canvas-nest.min.js"></script><!--animation-->
+<span id="add"  class="add_css">+&nbsp留言</span>
+<iframe id="action" name="action" src="about:blank" style="display:none;"></iframe><!--no F5 get data-->
+</body>
+</html>

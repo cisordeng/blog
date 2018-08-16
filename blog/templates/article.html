@@ -1,0 +1,31 @@
+<html>
+{% include 'head.html' with title='随笔' %}
+                {% load custom_markdown %}
+<body>
+	<div id='main'>
+        <header>
+            <div class='back'></div>
+            <div class='black'></div>
+        </header>
+		<div id='page'>
+		<script>
+            $('title').html('{{ article.title }}');
+            $('.black').html('<h1>{{ article.title }}</h1>');
+            $('header').css('height','300px');
+        </script>
+		
+<ul id='articles'>
+	<li class='body'>
+		<div id='article' style='width: 100%;position:inherit;height:auto;'>
+                {{ article.body|custom_markdown }}
+		</div>
+	</li>
+</ul>
+        <script src='/static/js/editormd.min.js'></script>
+        <script src="/static/js/prism.js"></script>
+		</div>
+        
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>
