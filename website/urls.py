@@ -26,6 +26,8 @@ urlpatterns = [
     url(r'^log/$',log),
 	url(r'^word/(.*)$',word),
     url(r'^message/$',message),
+    url(r'^get_netease_url/$',get_netease_url),
+
 
     url(r'',include('ckeditor_uploader.urls')),
     url(r'mdeditor/',include('mdeditor.urls')),

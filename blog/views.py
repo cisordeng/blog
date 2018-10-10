@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from blog.forms import MessageForm
 from blog.markdown.translater import getHTML
 from markdown import markdown
+import requests
 import datetime
 # Create your views here.
 
@@ -148,3 +149,8 @@ def get_title(path):
 
 def get_ip(request):
     return request.META.get('HTTP_X_FORWARDED_FOR',request.META.get('REMOTE_ADDR','未知IP'))
+
+def get_netease_url(request):
+    id = request.GET.get('id','')
+    res = requests.get('http://music.163.com/song/media/outer/url?id=' + id)
+    return HttpResponse(res.url)

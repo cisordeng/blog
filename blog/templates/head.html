@@ -1,5 +1,6 @@
 <head>
 <meta charset="UTF-8">
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel="stylesheet" type="text/css">
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
 <link rel='stylesheet' href='/static/css/article.css' type='text/css'/>
 <link rel='stylesheet' href='/static/css/log.css' type='text/css'/>
@@ -29,11 +30,16 @@
 	</div>
 </nav>
 <div id="mplayer">
+    <div id="music-back">
+        <div id="music-black"></div>
+    </div>
+    <canvas id='music-canvas'></canvas>
     <div id="music-author"></div>
     <div id="music-body">
         <div id="music-lrc"></div>
 		<div id="music-list"></div>
     	<div id="music-song"></div>
+        <audio id='py' crossOrigin='anonymous'></audio>
 	</div>
 </div>
 <div id='bt-menu'>MENU</div>

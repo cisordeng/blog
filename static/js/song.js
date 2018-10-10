@@ -14,15 +14,12 @@ $(function(){
             get_author(data);
 			get_list(data);
 			get_song(data['list'][listnum]['song']);
-            
-            $("#mplayer").after("<audio id='py'></audio>");
 			var audio = $("#py")[0];
-			
-            mInit(data,audio,listnum,songnum)
-			//mPlay(data,audio,listnum,songnum);
+            con_analyser();
+
+            mPlay(false,data,audio,listnum,songnum);
 
 			$("#music-list li").click(function(){
-                console.log('1');
 				get_song(data['list'][$(this).index()]['song']);
                 listcache=$(this).index();
 			});
@@ -30,7 +27,7 @@ $(function(){
 			$('#music-song').on('click','tr',function(){
 				listnum = listcache;
 				songnum = $(this).index();
-				mPlay(data,audio,listnum,songnum);
+				mPlay(true,data,audio,listnum,songnum);
 			});
 			
 			$(".ctrl").click(function(){
@@ -53,7 +50,7 @@ $(function(){
                 if(order==='list'){
 					listlength=data['list'][listnum]['song'].length;
 					songnum=(songnum+1)%listlength;
-					mPlay(data,audio,listnum,songnum)
+					mPlay(true,data,audio,listnum,songnum)
 				}
 			});
             //window.setInterval("drawProgress()",1000);
@@ -123,7 +120,7 @@ function load_lrc(str){
 	var lrc=str.trim().split('\n');
     for(var i=0;i<lrc.length;i++){
         words[i]=lrc[i].trim().trim('\n').substring(1).split(']');
-        console.log(words[i]);
+        //console.log(words[i]);
         words[i][0] = parseFloat(words[i][0].split(':')[0])*60*1000+
                       parseFloat(words[i][0].split(':')[1])*1000;
         if(isNaN(words[i][0])){
@@ -136,22 +133,19 @@ function load_lrc(str){
     return words;
 }
 
-function mInit(data,audio,listnum,songnum){
-    mPlay(data,audio,listnum,songnum);
-    audio.pause();
-	$('.ctrl img').attr('src','/static/paused.png');
-    $('.ctrl').css('animation-play-state','paused');
-	$('.mlrc').css('width','0');
-            
-}
 
-function mPlay(data,audio,listnum,songnum){
+function mPlay(auto,data,audio,listnum,songnum){
     get_song(data['list'][listnum]['song']);
     get_lrc(data['list'][listnum]['song'][songnum]);
 
 	$('.ctrl').css({'background':'url('+data['list'][listnum]['song'][songnum]['pic']+')','background-size':'100%'});	
-	audio.src=data['list'][listnum]['song'][songnum]['url'];
-	audio.play();
+	//audio.src=data['list'][listnum]['song'][songnum]['url'];
+    audio.currentTime=0;
+    audio.pause();
+	get_true_url(audio,auto,data['list'][listnum]['song'][songnum]['id']);
+    $("#music-back").css('background-image','url('+data['list'][listnum]['song'][songnum]['pic']+')');
+    //Play(audio.src);
+    //audio.play();
 	$('.ctrl img').attr('src','/static/playing.png');
 	$('.ctrl').css('animation-play-state','running');
 	$('.playing').removeClass('playing');
@@ -181,4 +175,78 @@ function drawProgress(){
     ctx.beginPath();
     ctx.arc(c.width/2,c.height/2,c.width/2,0.5*Math.PI,(2*alpha+0.5)*Math.PI);
     ctx.stroke();
+}
+function get_true_url(audio, auto, id){
+    $.ajax({
+        url: '/get_netease_url/?id='+id,
+        dataType: 'html',
+        async: true,
+        success: function(data){
+            audio.src=data;
+            if(auto)
+                audio.play();
+        }
+    });
+}
+
+function con_analyser(){
+    if (!window.AudioContext) {
+        alert('您的浏览器不支持AudioContext');
+    }
+    else {
+        var atx = new AudioContext();
+        var source = atx.createMediaElementSource($('#py')[0]);
+        var analyser = atx.createAnalyser();
+        //var source = atx.createBufferSource();
+        source.connect(analyser);
+ 	    analyser.connect(atx.destination);
+        var color='rgba(255,255,255,0.2)';
+        var width=8;
+        draw_music(analyser,color,width);
+    }
+}
+function draw_music(analyser,color,w){
+    
+            var music_canvas = document.getElementById('music-canvas');
+            //获取屏幕的宽度
+            music_canvas.width = $('#music-body').width();
+            music_canvas.height = $('#music-body').height();
+            var cwidth = music_canvas.width,cheight = music_canvas.height - 2;
+            ctx = music_canvas.getContext('2d');
+            ctx.lineWidth = '100'
+            gradient = ctx.createLinearGradient(0, 0, 0, 300);
+           // gradient.addColorStop(1, '#0f0');
+           // gradient.addColorStop(0.5, '#ff0');
+           // gradient.addColorStop(0, '#f00');
+            var drawMeter = function () {
+                var array = new Uint8Array(analyser.frequencyBinCount);
+                analyser.getByteFrequencyData(array);
+                ctx.clearRect(0, 0, cwidth, cheight);
+                /*
+                number++;
+                if (number > 1000 && number < 1003) {
+                    console.info(array);
+                }
+                if (array[1020] > 0) {
+                    console.info(array);
+                }
+                */
+				var i,j;
+                for (i = 0; i < cwidth/2; i+=w) {
+                    var value = array[cwidth/2 - 1 - i];
+                    ctx.shadowBlur=5;
+                    ctx.shadowColor='#ccc';
+                    ctx.fillStyle = color;
+                    ctx.fillRect(i, cheight - value, w-2, value);
+                }
+                for (j = 0; j < cwidth/2; j+=w) {
+                    var value = array[j];
+                    ctx.shadowBlur=5;
+                    ctx.shadowColor='#ccc';
+                    ctx.fillStyle = color;
+                    ctx.fillRect(i+j, cheight - value, w-2, value);
+                }
+                requestAnimationFrame(drawMeter);
+            }
+            requestAnimationFrame(drawMeter);
 }

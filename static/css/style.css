@@ -45,6 +45,7 @@ a{
 pre,code{
     font-size: 0.8em;
     background-color: #f8f8f8;
+    font-family: "Roboto Mono", Monaco, courier, monospace;
     -webkit-font-smoothing: initial;
     -moz-osx-font-smoothing: initial;
 }
@@ -53,7 +54,7 @@ pre{
     line-height: 1.5em;
     margin: 0;
     border: solid 1px #eee;
-    overflow-x: scroll;
+    overflow-y:hidden;
 }
 code{
     color: #e96900;
@@ -344,7 +345,6 @@ footer span{
     line-height: 3.5rem;
     cursor: pointer;
     border-radius: 100%;
-    z-index: 899;
     text-align: center;
     font-size: 1rem;
     background: rgba(255,255,255,0.1);

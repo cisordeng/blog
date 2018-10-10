@@ -1,13 +1,19 @@
-var url = 'http://m10.music.126.net/20180812193951/6528108fd85fd457bb3ec9fd36158900/ymusic/cd62/c37a/7651/103a229b5d1e9a95d7fca95cbc8ee385.mp3';
-url = 'http://music.163.com/song/media/outer/url?id=276134.mp3';
+function Play(url){
 if (!window.AudioContext) {
     alert('您的浏览器不支持AudioContext');
 } else {
     var atx = new AudioContext();
-     source = null;
-    var request = new XMLHttpRequest();
+    source = null;
+    request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.responseType = 'arraybuffer';
+var source = atx.createMediaElementSource($('#py')[0]);
+            var analyser = atx.createAnalyser();
+            //var source = atx.createBufferSource();
+            source.connect(analyser);
+ 			analyser.connect(atx.destination);
+            $('#py')[0].play();
+    /*
     request.onload = function () {
         var arraybuffer = request.response;
         atx.decodeAudioData(arraybuffer, function (buffer) {
@@ -53,6 +59,9 @@ if (!window.AudioContext) {
         });
 
     }
+    
     request.send();
  var number = 0;
+ */
+}
 }
